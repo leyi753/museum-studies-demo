@@ -146,13 +146,13 @@
         _long: undefined
       };
       const offset = 1;
-      
+
       const markers = [];
       let marker_id_counter = 0;
 
       function handleGeoData(_lat, _long) {
         // make sure the add_marker_panel is visible
-        add_marker_panel.style.display = "block";
+        add_marker_panel.style.display = 'block';
 
         // store position in our global object
         global_location._lat = _lat;
@@ -173,93 +173,82 @@
 
         // figure out how far away we are from all of our previously created markers
         for (let i = 0; i < markers.length; i++) {
-          // compute distance between this marker and the current position
-          let d = Math.sqrt(
-            Math.pow(markers[i]._lat - _lat, 2) +
-              Math.pow(markers[i]._long - _long, 2)
-          );
+            // compute distance between this marker and the current position
+            let d = Math.sqrt(Math.pow(markers[i]._lat-_lat,2) + Math.pow(markers[i]._long-_long, 2));
+            
+            // convert to meters
+            d = d * 111139; // https://sciencing.com/convert-latitude-longtitude-feet-2724.html
 
-          // convert to meters
-          d = d * 111139; // https://sciencing.com/convert-latitude-longtitude-feet-2724.html
-
-          // update element
-          document.getElementById(markers[i]._id).innerHTML =
-            "Distance: " + d + " meters";
+            // update element
+            document.getElementById(markers[i]._id).innerHTML = 'Distance: ' + d + ' meters';
 
           // are we close to this marker?
-          // if we are close to 4 and 6
-          if (d < threshold.value + offset && d > threshold.value - offset) {
-            document
-              .getElementById(markers[i]._id)
-              .parentElement.classList.add("close");
-            document.getElementById("matched").innerText = "Matched!";
-          }
-          // else {
-          //   document
-          //     .getElementById(markers[i]._id)
-          //     .parentElement.classList.remove("close");
-          // }
+          if (d < threshold.value) {
+                document.getElementById(markers[i]._id).parentElement.classList.add('close');
+                document.getElementById("matched").innerHTML = "Matched";
+            }
+            else {
+                document.getElementById(markers[i]._id).parentElement.classList.remove('close');
+            }
         }
       }
 
-      // make sure we have access to the geo location API
-      if (!navigator.geolocation) {
-        alert("Geolocation is not supported by your browser");
-      } else {
-        // set up a watch function to run every time the user's geo position changes
-        const watchID = navigator.geolocation.watchPosition(
-          function (position) {
-            handleGeoData(position.coords.latitude, position.coords.longitude);
-          },
-          function (error) {
-            alert("Position error: " + error);
-          },
-          {
-            enableHighAccuracy: true,
-            maximumAge: 0,
-            timeout: 5000
-          }
-        );
+        // make sure we have access to the geo location API
+        if(!navigator.geolocation) {
+            alert('Geolocation is not supported by your browser');
+        } 
 
-        // if the user wants to mark this position
-        drop_marker.addEventListener("click", function (e) {
-   
-            // create a new marker object
-          const tempMarker = {
-            _lat: global_location._lat,
-            _long: global_location._long,
-            _id: "marker" + marker_id_counter
-          };
+        // success - we can access the geo location API
+        else {
+            // set up a watch function to run every time the user's geo position changes
+            const watchID = navigator.geolocation.watchPosition(
+                function(position) {
+                    handleGeoData(position.coords.latitude, position.coords.longitude);
+                },
+                function(error) {
+                    alert("Position error: " + error);
+                },
+                {
+                    enableHighAccuracy: true,
+                    maximumAge: 0,
+                    timeout: 5000
+                }
+            );
 
-          // store in our array
-          markers.push(tempMarker);
+            // if the user wants to mark this position
+            drop_marker.addEventListener('click', function(e) {
+                // create a new marker object
+                const tempMarker = {
+                    _lat: global_location._lat,
+                    _long: global_location._long,
+                    _id: 'marker'+marker_id_counter
+                };
 
-          // create an element dispaly the marker
-          let tempMarkerEl = document.createElement("div");
-          tempMarkerEl.classList.add("close");
+                // store in our array
+                markers.push(tempMarker);
 
-          // element to hold position (static)
-          let tempMarkerElPosition = document.createElement("div");
-          tempMarkerElPosition.innerHTML =
-            "Latitude: " +
-            global_location._lat +
-            "<br>Longitude: " +
-            global_location._long;
-          tempMarkerEl.appendChild(tempMarkerElPosition);
+                // create an element dispaly the marker
+                let tempMarkerEl = document.createElement('div');
+                tempMarkerEl.classList.add('close');
 
-          // element to hold distance (dynamically updated)
-          let tempMarkerElDistance = document.createElement("div");
-          tempMarkerElDistance.innerHTML = "Distance: 0 meters";
-          tempMarkerElDistance.id = "marker" + marker_id_counter;
-          tempMarkerEl.appendChild(tempMarkerElDistance);
+                // element to hold position (static)
+                let tempMarkerElPosition = document.createElement('div');
+                tempMarkerElPosition.innerHTML = 'Latitude: ' + global_location._lat + '<br>Longitude: ' + global_location._long;
+                tempMarkerEl.appendChild(tempMarkerElPosition);
 
-          // add the marker to the page
-          marker_list.appendChild(tempMarkerEl);
+                // element to hold distance (dynamically updated)
+                let tempMarkerElDistance = document.createElement('div');
+                tempMarkerElDistance.innerHTML = 'Distance: 0 meters';
+                tempMarkerElDistance.id = 'marker'+marker_id_counter;
+                tempMarkerEl.appendChild(tempMarkerElDistance);
 
-          // update marker_id_counter for the next marker
-          marker_id_counter++;
-        });
-      }
+                // add the marker to the page
+                marker_list.appendChild(tempMarkerEl);
+
+                // update marker_id_counter for the next marker
+                marker_id_counter++;
+            });            
+        }
     </script>
   </body>
 </html>
