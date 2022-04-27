@@ -145,7 +145,8 @@
         _lat: undefined,
         _long: undefined
       };
-
+      const offset = 1;
+      
       const markers = [];
       let marker_id_counter = 0;
 
@@ -222,7 +223,8 @@
 
         // if the user wants to mark this position
         drop_marker.addEventListener("click", function (e) {
-          // create a new marker object
+   
+            // create a new marker object
           const tempMarker = {
             _lat: global_location._lat,
             _long: global_location._long,
