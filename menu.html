@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="template.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <title>The Merchant's Museum - Menu</title>
+    <style>
+      @media only screen and (max-width: 600px) {
+        .mainMenu {
+          flex-direction: column;
+        }
+      }
+      /* Small devices (portrait tablets and large phones, 600px and up) */
+      @media only screen and (min-width: 600px) {
+        .mainMenu {
+          flex-direction: column;
+        }
+      }
+      /* Medium and large devices (landscape tablets and laptops 768px and up) */
+      @media only screen and (min-width: 992px) {
+        .mainMenu {
+          flex-direction: row;
+        }
+      }
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      body {
+        background-color: beige;
+      }
+      /* W3School Example */
+      .navBar {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #e4b7a0;
+      }
+
+      li {
+        float: right;
+        margin-right: 12px;
+      }
+
+      li a,
+      .dropbtn {
+        display: inline-block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover,
+      .dropdown .dropbtn {
+        padding: 10px;
+        font-weight: bold;
+      }
+
+      li a:hover,
+      .dropdown:hover .dropbtn {
+        background-color: #cc543a;
+      }
+
+      li.dropdown {
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 30px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 12px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .pageTitle {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 100%;
+      }
+      .mainMenu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid black; */
+        margin: auto;
+        text-align: center;
+        margin: 10px;
+      }
+      .sections {
+        /* border: 1px solid black; */
+        width: 100%;
+        margin: 10px;
+        /* background: lightgray; */
+        display: inline-block;
+        box-sizing: border-box;
+        text-align: center;
+      }
+      .objectImg {
+        width: 90%;
+        margin-top: 10px;
+        border-radius: 5px;
+      }
+      .subTitle {
+        position: absolute;
+        color: white;
+        font-size: 25px;
+        margin-top: -42px;
+        margin-left: 40px;
+        letter-spacing: 4.5px;
+      }
+      #notice {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 700px;
+        width: 100%;
+        background-color: white;
+      }
+      #msgBox {
+        width: 250px;
+        text-align: center;
+        margin: auto;
+        border-radius: 15px;
+        padding: 12px;
+        background-color: lightgoldenrodyellow;
+      }
+      #msgType {
+        font-weight: bold;
+        font-size: 22px;
+        border: 1px solid black;
+        padding: 3px;
+      }
+      #msg {
+        display: block;
+        width: 90%;
+        margin: auto;
+        padding: 3px;
+        font-size: 18px;
+      }
+      ._btn {
+        border: none;
+        border-radius: 3px;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        background-color: ivory;
+        font-size: 15px;
+        width: 80%;
+        padding: 3px;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+      ._btn:active {
+        background-color: coral;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <ul class="navBar">
+        <h4 class="pageTitle">Kitchen Room Objects</h4>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">Menu</a>
+          <div class="dropdown-content">
+            <a href="settings.html">Settings</a>
+            <a href="kitchen2.html">Kitchen</a>
+            <a href="index.html">Map</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="content">
+      <main>
+        <article class="mainMenu">
+          <section class="sections" id="kitchenTable">
+            <a href="objects/kitchenTable.html">
+              <img
+                src="images/kitchenTable.JPG"
+                alt="kitchenRoom"
+                class="objectImg"
+              />
+            </a>
+            <p class="subTitle">Kitchen table</p>
+          </section>
+
+          <section class="sections" id="pieSafe">
+            <a href="objects/pieSafe.html">
+              <img src="images/PieSafe.JPG" alt="pieSafe" class="objectImg" />
+            </a>
+            <p class="subTitle">Pie Safe</p>
+          </section>
+
+          <section class="sections" id="washBasin">
+            <a href="objects/washBasin.html">
+              <img
+                src="images/WashBasin.JPG"
+                alt="washBasin"
+                class="objectImg"
+              />
+            </a>
+            <p class="subTitle">Wash Basin</p>
+          </section>
+
+          <section class="sections" id="candle">
+            <img src="images/candleLamps.JPG" alt="candle" class="objectImg" />
+            <p class="subTitle">Candle Lamps</p>
+          </section>
+        </article>
+
+        <div id="noticeBox"></div>
+      </main>
+    </div>
+  </body>
+  <script>
+    // pop up info
+    const popUp = `
+      <div id="notice">
+        <div id="msgBox">
+          <p><span id="msg">You are approaching the kitchen. Would you like to 
+            activiate audio guide?</span></p> 
+          <button class="_btn" id="confirm" onclick="location.href='kitchen.html'">Yes</button>
+        </div>
+      </div>
+      `;
+
+    document.querySelector("#kitchen").addEventListener("click", function () {
+      document.querySelector("#noticeBox").innerHTML = popUp;
+      document.querySelector(".mainMenu").classList.add("hidden");
+    });
+  </script>
+</html>

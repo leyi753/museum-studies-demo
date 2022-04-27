@@ -1,0 +1,23 @@
+body {
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+.header {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    background-color:rgb(215,196,187);
+    height: 30px;
+}
+.title{
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.content{
+    padding: 10px;
+    width:90%;  
+    margin: auto;     
+}
+.header + .content {
+    padding-top: 35px;
+}

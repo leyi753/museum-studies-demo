@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://kit.fontawesome.com/a062562745.js"crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="template.css">
+    <title>The Merchant's Museum - Kitchen</title>
+    <style>
+      /* Extra small devices (phones, 600px and down) */
+      @media only screen and (max-width: 600px) {
+        body {
+          background: white;
+        }
+      }
+      /* Small devices (portrait tablets and large phones, 600px and up) */
+      @media only screen and (min-width: 600px) {
+        body {
+          background: yellow;
+        }
+      }
+      /* Medium devices (landscape tablets, 768px and up) */
+      @media only screen and (min-width: 768px) {
+        body {
+          background: blue;
+        }
+      }
+      /* Large devices (laptops/desktops, 992px and up) */
+      @media only screen and (min-width: 992px) {
+        body {
+          background: orange;
+        }
+      }
+      .title{
+        text-align: left;
+        margin-left: 30px;
+      }
+      .introDiv {
+        background: lightyellow;
+        border: 1px solid black;
+        margin: auto;     
+      }
+      #fullImg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 400px;
+        margin-top: 5px;
+        width: 300px;
+        height: 320px;
+        display: block;
+        margin: 20px auto;
+        border: 0 none;
+        max-width: 880px;
+        border-radius: 2px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+          0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
+          0 8px 16px rgba(0, 0, 0, 0.11);
+      }
+  
+      /* .room{
+        background: lightpink;
+        margin-top: 5px;
+        border: 1px solid black;
+        text-align: center;
+      }
+      .objectsWrapper{
+        display: flex;
+        overflow-x: auto;
+        height: 250px;
+        }
+      .objectImg{
+        width:200px;
+        height: 200px;
+        margin: 5px;
+      } */
+      .footer {
+        left: 0;
+        width: 100%;
+        height:85px;
+        background-color: lightcoral;
+        margin-top: 10px;
+      }
+      .audioPlayer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 85px;
+      }
+      .audioInfo{
+        display: flex;
+        justify-content: center;
+        align-items: center;        
+        padding:3px;
+        font-weight: bold;
+      }
+      .audioInfo > .audioTitle{
+        /* margin-right:10px; */
+        padding:5px;
+      }
+      .emptyBar{
+        width: 430px;
+        height:5px;
+        background-color: white;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+      #progressBar{
+        width: 0px;
+        height:5px;
+        background-color: green;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+      .control{        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        padding: 5px;
+      }
+      .btnGeneral{
+        margin-left:20px;
+        margin-right: 20px;
+      }
+      .fas{
+        color: black;
+      }
+      .hidden{
+        display:none;
+      }
+      .transcript {
+        border: 1px solid black;
+        background: lightcyan;
+        margin-top: 10px;
+      }
+      .subTitle{
+        text-align: left;
+        margin-left: 25px;
+        width:90%;
+        font-weight: bold;
+      }
+      .item_desc{
+        display: flex;
+        overflow-x: auto;
+        height: 250px;    
+        text-align: left;
+        margin-left: 25px;
+        width:90%;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <header>
+        <h4 class="title">You are at the kitchen.</h4>
+      </header>
+    </div>
+
+    <div class="content">
+        <main>
+            <article id="kitchenContent">
+                <section class="introDiv">
+                    <iframe
+                        id="fullImg"
+                        allowfullscreen="true"
+                        allow="accelerometer; magnetometer; gyroscope"
+                        src="https://panoraven.com/en/embed/sPJIX8D33r"
+                    >
+                    </iframe>
+                </section>
+
+                <div class="footer">
+                  <div class="audioPlayer">
+                   <div class = "audioInfo">
+                       <div class="audioTitle">Perspective: Irish Servant</div>
+                       <div class="currentTime">00:00/</div>
+                       <div class="duration">01:59</div>    
+                   </div>
+           
+                   <div class="emptyBar"> 
+                       <audio id="kitchenAudio" src="assets/testAudio.mp3" type="audio/mpeg"></audio>
+                       <div id="progressBar"></div>
+                   </div>
+           
+                   <div class="control">  
+                       <div class="btnGeneral" id="backwardBtn">
+                           <i class="fas fa-backward"></i>
+                       </div>
+                       <div class="btnGeneral" id="playState">
+                           <i class="fas fa-play " id="playBtn" ></i>
+                           <i class="fas fa-pause hidden" id="pasueBtn"></i>   
+                       </div>
+                       <div class="btnGeneral" id="forwardBtn">
+                           <i class="fas fa-forward"></i>
+                       </div>
+                   </div>
+               </div>  
+               
+                <section class="transcript">
+                    <p class="subTitle">The Kitchen </p>
+                    <p class="item_desc">
+                      Hello, Welcome to the kitchen! You stand on a dark wooden plank floor,
+                      surrounded by off-white painted brick walls. Things are rather busy right now,
+                      as myself and my helper are preparing dinner for the Tredwell family. The four
+                      of us servants have already been up since dawn carrying out our duties,
+                      preparing breakfast, setting tables, tidying, and refilling the houses’ oil
+                      lamps, two of which can currently be found on a table at the back left corner,
+                      along with three more traditional candle holders. We will need these as the
+                      night goes longer and the sun begins to set, but for now we have adequate
+                      daylight to work. I’m standing behind our preparation station, a long wooden
+                      table stuffed to its edges with mixing bowls, rolling pins, and other
+                      utensils. We’ve brought a wooden chair to the right of the table so we can
+                      rest our feet as we prepare ingredients, many of which were purchased by
+                      Seabury Tredwell himself at the nearby Tompkins Market this very morning.
+                      Behind me to the left is a traditional beehive oven, which looks like a square
+                      hole cut into the wall, with black stone above and below the opening. It is
+                      named for its domed interior, from which the smell of freshly baked bread
+                      wafts through the air, mixed with the smoky aroma of the oven’s flames. I can
+                      feel its heat as the bread bakes, but soon the oven will cool, and I can use
+                      the lower temperatures to bake custards and cakes for dessert. Directly behind
+                      me is a black cast iron coal-burning stove with an elaborately decorated
+                      front. Metal pots and kettles sit atop it, and occasionally you can hear its
+                      coals pop. From it, I’m beginning to get a whiff of the savory, stewed
+                      vegetables that will be eaten as a later course. This stove is a more modern
+                      technology, which helps us cook several types of food at once. I didn’t like
+                      it much at first, but it’s growing on me: With the addition of this new stove,
+                      we are more easily able to host the family’s elaborate, multi-course dinner
+                      parties. However, the old fashioned beehive oven is still best for baking
+                      bread. To the right of the new stove are two long, built-in shelves where we
+                      store dishes and cookware. Built into the bottom shelf is a smaller basin for
+                      washing up, with two water spigots and three cabinets of storage built into
+                      its base. This is not our only wash area, though. To your right is our large,
+                      soapstone utility tub which sits between two windows that look out onto the
+                      garden. The tub’s dark gray angled basin slants out slightly from the wall,
+                      while its bright white wooden base sits on its thick dowel legs. We have the
+                      utmost luxury of running water in this home, thanks to a 4,000-gallon cistern
+                      located underground in the garden. This helps us to wash our cookware and do
+                      laundry quickly and more easily. Oh, it smells like the bread is ready! We’re
+                      always having to multitask here. Beautiful, it looks delicious! For now, I
+                      will keep it in the pie safe all the way against the wall to your left, next
+                      to the door to the storage room. The pie safe, a metal-paneled box on tall,
+                      wooden legs, will keep our baked goods away from pests until they’re ready to
+                      eat while the decoratively punctured holes on its front panel will help them
+                      cool. Above the pie safe is a small interior window with white wooden trim,
+                      which gives us some much-needed light to the pantry on the other side of the
+                      wall. And finally, tucked underneath the pie safe on the floor are ceramic
+                      crocks, either with two handles to the sides and a large lid, or jugs with one
+                      handle and a smaller opening. These are also quite important in storing food
+                      and keeping it safe from pesky vermin. [Bell rings] Oh, perfect timing! That
+                      bell means that the family is ready for their food… I think I see my server
+                      coming through the garden now! If you’ll excuse me, I’ll need to be of service
+                      for a bit, but thank you for stopping by my kitchen!
+                    </p>
+                    
+                </section>
+
+                <!-- <div class="room">
+                    <p>Room Objects</p>
+                    <div class="objectsWrapper">
+                        <div id="kitchenTable">
+                            <img src="images/kitchenTable.JPG" class="objectImg">
+                        </div>
+                        <div class="pieSafe">
+                            <img src="images/PieSafe.JPG" class="objectImg">
+                        </div>
+                        <div class="washBasin">
+                            <img src="images/WashBasin.JPG" class="objectImg">
+                        </div>
+                        <div class="candle">
+                            <img src="images/candleLamps.JPG" class="objectImg">
+                        </div>
+                    </div>                
+                  </div> -->
+            </article>
+        </main>
+    </div>
+  
+  </body>
+  <script>
+    const kitchenAudio = document.querySelector("#kitchenAudio");
+    const progressBar = document.querySelector("#progressBar");
+    const emptyBar = document.querySelector(".emptyBar");
+    const playBtn = document.querySelector("#playBtn");
+    const pauseBtn = document.querySelector("#pasueBtn");
+    const backwardBtn = document.querySelector("#backwardBtn");
+    const forwardBtn = document.querySelector("#forwardBtn");
+    
+    function getMinutes(time) {
+        var min = parseInt(time/ 60);
+        var sec = parseInt(time % 60);
+        if (sec < 10) {
+            sec = "0" + sec;
+        }
+        if (min < 10) {
+            min = "0" + min;
+        }
+        return min + ":" + sec;
+    }
+
+    // reference to MDN Audio doc 
+    function updateProgress(){
+        var progress = parseInt(((kitchenAudio.currentTime / kitchenAudio.duration) * 100), 10);
+        return progress;
+    }
+
+    kitchenAudio.addEventListener('timeupdate', function() {
+      //sets the percentage
+      document.querySelector(".currentTime").innerHTML = getMinutes(kitchenAudio.currentTime)+"/";
+      document.querySelector(".duration").innerHTML = getMinutes(kitchenAudio.duration);
+      progressBar.style.width = updateProgress() + "%";
+   });
+
+    emptyBar.addEventListener('click', function(e) {
+       // calculate the normalized position clicked
+       var clickPosition = (e.pageX  - this.offsetLeft) / this.offsetWidth;
+       var clickTime = clickPosition * kitchenAudio.duration;
+       // move the playhead to the correct position
+       kitchenAudio.currentTime = clickTime;
+    });
+
+    playBtn.addEventListener("click",function() {
+        playBtn.classList.add("hidden");
+        pauseBtn.classList.remove("hidden");
+        kitchenAudio.play();
+    });
+
+    pauseBtn.addEventListener("click",function() {
+        playBtn.classList.remove("hidden");
+        pauseBtn.classList.add("hidden");
+        kitchenAudio.pause();
+    });
+
+   forwardBtn.addEventListener("click",function() {
+        kitchenAudio.currentTime = kitchenAudio.currentTime+15;
+        updateProgress();
+    });
+
+    backwardBtn.addEventListener("click",function() {
+        kitchenAudio.currentTime = kitchenAudio.currentTime-15;
+        if(kitchenAudio.currentTime < 0){
+            kitchenAudio.currentTime = 0;
+        }
+        updateProgress();
+    });
+  
+  </script>
+</html>

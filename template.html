@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>The Merchant's Museum</title>
+    <style>
+      body {
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
+      .start {
+        margin: auto;
+        text-align: center;
+        background: lightcyan;
+        padding: 1.25em;
+        /* border: 1px solid black; */
+      }
+      .btnEnter {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: 1.25em;
+        width: 5em;
+        height: 2em;
+        text-align: center;
+        background-color: #e7e7e7;
+        border-radius: 3px;
+      }      
+      /* Extra small devices (phones, 600px and down) */
+      @media only screen and (max-width: 600px) {
+        body {
+          background: white;
+        }
+      }
+      /* Small devices (portrait tablets and large phones, 600px and up) */
+      @media only screen and (min-width: 600px) {
+        body {
+          background: yellow;
+        }
+      }
+      /* Medium devices (landscape tablets, 768px and up) */
+      @media only screen and (min-width: 768px) {
+        body {
+          background: blue;
+        }
+      }
+      /* Large devices (laptops/desktops, 992px and up) */
+      @media only screen and (min-width: 992px) {
+        body {
+          background: orange;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="start">
+      <h2>The Merchant's Museum</h2>
+      <!-- window.location.href is for windows system -->
+      <button onclick="location.href='menu.html'" class="btnEnter">Enter</button>
+    </div>
+
+  </body>
+  <script>
+      let btn = document.querySelector('.btnEnter');
+  </script>
+</html>

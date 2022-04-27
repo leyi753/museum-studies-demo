@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://kit.fontawesome.com/a062562745.js"crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/template.css">
+    <title>The Merchant's Museum - Pie Safe</title>
+    <style>
+      body{
+        background-color: beige;
+      }
+      .title{
+        text-align: center;
+      }
+      .introDiv {
+        background: lightyellow;
+        border: 1px solid black;
+        margin: auto; 
+        text-align: center;    
+      }
+      .objectImg{
+        width:90%;
+        padding: 10px;
+      }
+      .footer {
+        left: 0;
+        width: 100%;
+        height:85px;
+        background-color: lightcoral;
+        margin-top: 10px;
+      }
+      .audioPlayer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 85px;
+      }
+      .audioInfo{
+        display: flex;
+        align-items: center;  
+        padding:3px;
+      }
+      .audioInfo > .audioTitle{
+        padding:5px;
+      }
+      .emptyBar{
+        width: 90%;
+        height:5px;
+        background-color: rgb(215,196,187);
+        cursor: pointer;
+        border-radius: 10px;
+      }
+      #progressBar{
+        width: 0px;
+        height:5px;
+        background-color: green;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+      .control{        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        padding: 5px;
+      }
+      .btnGeneral{
+        margin-left:20px;
+        margin-right: 20px;
+      }
+      .fas{
+        color: black;
+      }
+      .hidden{
+        display:none;
+      }
+      .transcript {
+        /* border: 1px solid black; */
+        background: lightcyan;
+        padding: 5px;
+        margin-top: 10px;
+      }
+      .subTitle{
+        text-align: left;
+        margin-left: 25px;
+        width:90%;
+        font-weight: bold;
+      }
+      .item_desc{
+        display: flex;
+        overflow-x: auto;
+        height: 250px;    
+        text-align: left;
+        margin-left: 25px;
+        width:90%;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="header">
+        <header>
+          <h4 class="title">Room Objects: Pie Safe</h4>
+        </header>
+      </div>
+
+    <div class="content">
+        <main>
+            <article id="kitchenContent">
+                <section class="introDiv">
+                    <img
+                    src="/images/PieSafe.JPG"
+                    alt="An elevated pie safe with ceramic jugs below it.."
+                    class="objectImg"
+                  />
+                </section>
+
+                <div class="footer">
+                  <div class="audioPlayer">
+                   <div class = "audioInfo">
+                       <div class="audioTitle">Pie Safe</div>
+                       <div class="currentTime">00:00/</div>
+                       <div class="duration">01:59</div>    
+                   </div>
+           
+                   <div class="emptyBar"> 
+                       <audio id="kitchenAudio" src="/audio/testAudio.mp3" type="audio/mpeg"></audio>
+                       <div id="progressBar"></div>
+                   </div>
+           
+                   <div class="control">  
+                       <div class="btnGeneral" id="backwardBtn">
+                           <i class="fas fa-backward"></i>
+                       </div>
+                       <div class="btnGeneral" id="playState">
+                           <i class="fas fa-play " id="playBtn" ></i>
+                           <i class="fas fa-pause hidden" id="pasueBtn"></i>   
+                       </div>
+                       <div class="btnGeneral" id="forwardBtn">
+                           <i class="fas fa-forward"></i>
+                       </div>
+                   </div>
+               </div>  
+               
+                <section class="transcript">
+                    <p class="subTitle">The Pie Safe </p>
+                    <p class="item_desc">
+                        The pie safe is about five feet tall, two feet wide, and a foot deep, or 1.5
+                        meters tall, half a meter wide, and a third of a meter deep. It comprises a box
+                        with an angled top, like a roof and two U-shaped legs that attach at the front
+                        and back of the box. The box and its legs are of equal height. The frame of the
+                        box is made of wood, but the front and sides of the box are made of tin panels.
+                        Its tin shows some signs of oxidation, with rough, brown sections showing
+                        through its otherwise shiny, dark gray exterior. There is a tall door on the
+                        front of the pie safe that takes up a third of the box’s face, which opens from
+                        left to right and is secured by a metal latch. The pie safe is also decorated
+                        with a design made of holes punctured into its tin facade, with each hole about
+                        the size of the head of a pin and similarly spaced between one another. This
+                        pattern repeats three times over the face, and is composed of a tall rectangle
+                        divided in half lengthwise, with a large symbol of a star within a circle
+                        positioned in each half. Each rectangle has an outline thicker at the top than
+                        the bottom, and a simple arched design radiates inwards from the rectangles’
+                        corners. Each star and circle symbol is flanked by simple oval shapes: these
+                        ovals are to the left and right of the star on the middle section, and above or
+                        below the star on the left and right sections. The wooden legs of the pie safe
+                        have no designs, but show signs of discoloration towards the bottom. Underneath
+                        the pie safe are three ceramic jugs with small handles, and a slightly larger
+                        ceramic vessel with a round lid. This larger vessel has the number “3” written
+                        on its side in black ink, outlined with a squiggly square.
+                    </p>
+                    
+                </section>
+
+            </article>
+        </main>
+    </div>
+  
+  </body>
+  <script>
+    const kitchenAudio = document.querySelector("#kitchenAudio");
+    const progressBar = document.querySelector("#progressBar");
+    const emptyBar = document.querySelector(".emptyBar");
+    const playBtn = document.querySelector("#playBtn");
+    const pauseBtn = document.querySelector("#pasueBtn");
+    const backwardBtn = document.querySelector("#backwardBtn");
+    const forwardBtn = document.querySelector("#forwardBtn");
+    
+    function getMinutes(time) {
+        var min = parseInt(time/ 60);
+        var sec = parseInt(time % 60);
+        if (sec < 10) {
+            sec = "0" + sec;
+        }
+        if (min < 10) {
+            min = "0" + min;
+        }
+        return min + ":" + sec;
+    }
+
+    // reference to MDN Audio doc 
+    function updateProgress(){
+        var progress = parseInt(((kitchenAudio.currentTime / kitchenAudio.duration) * 100), 10);
+        return progress;
+    }
+
+    kitchenAudio.addEventListener('timeupdate', function() {
+      //sets the percentage
+      document.querySelector(".currentTime").innerHTML = getMinutes(kitchenAudio.currentTime)+"/";
+      document.querySelector(".duration").innerHTML = getMinutes(kitchenAudio.duration);
+      progressBar.style.width = updateProgress() + "%";
+   });
+
+    emptyBar.addEventListener('click', function(e) {
+       // calculate the normalized position clicked
+       var clickPosition = (e.pageX  - this.offsetLeft) / this.offsetWidth;
+       var clickTime = clickPosition * kitchenAudio.duration;
+       // move the playhead to the correct position
+       kitchenAudio.currentTime = clickTime;
+    });
+
+    playBtn.addEventListener("click",function() {
+        playBtn.classList.add("hidden");
+        pauseBtn.classList.remove("hidden");
+        kitchenAudio.play();
+    });
+
+    pauseBtn.addEventListener("click",function() {
+        playBtn.classList.remove("hidden");
+        pauseBtn.classList.add("hidden");
+        kitchenAudio.pause();
+    });
+
+   forwardBtn.addEventListener("click",function() {
+        kitchenAudio.currentTime = kitchenAudio.currentTime+15;
+        updateProgress();
+    });
+
+    backwardBtn.addEventListener("click",function() {
+        kitchenAudio.currentTime = kitchenAudio.currentTime-15;
+        if(kitchenAudio.currentTime < 0){
+            kitchenAudio.currentTime = 0;
+        }
+        updateProgress();
+    });
+  
+  </script>
+</html>
