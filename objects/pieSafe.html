@@ -15,8 +15,6 @@
         text-align: center;
       }
       .introDiv {
-        background: lightyellow;
-        border: 1px solid black;
         margin: auto; 
         text-align: center;    
       }
@@ -24,11 +22,10 @@
         width:90%;
         padding: 10px;
       }
-      .footer {
+      .audio {
         left: 0;
         width: 100%;
         height:85px;
-        background-color: lightcoral;
         margin-top: 10px;
       }
       .audioPlayer{
@@ -42,6 +39,7 @@
         display: flex;
         align-items: center;  
         padding:3px;
+        font-weight: bold;
       }
       .audioInfo > .audioTitle{
         padding:5px;
@@ -84,21 +82,21 @@
         margin-top: 10px;
       }
       .subTitle{
-        text-align: left;
-        margin-left: 25px;
-        width:90%;
         font-weight: bold;
       }
       .item_desc{
         display: flex;
+        flex-direction: column;
         overflow-x: auto;
-        height: 250px;    
+        height: 300px;    
         text-align: left;
         margin-left: 25px;
         width:90%;
+        font-size: 20px;
       }
-
-
+      .item_desc p{
+        margin:8px;
+      }
     </style>
   </head>
   <body>
@@ -119,16 +117,16 @@
                   />
                 </section>
 
-                <div class="footer">
+                <div class="audio">
                   <div class="audioPlayer">
                    <div class = "audioInfo">
                        <div class="audioTitle">Pie Safe</div>
                        <div class="currentTime">00:00/</div>
-                       <div class="duration">01:59</div>    
+                       <div class="duration">01:53</div>    
                    </div>
            
                    <div class="emptyBar"> 
-                       <audio id="kitchenAudio" src="/audio/testAudio.mp3" type="audio/mpeg"></audio>
+                       <audio id="kitchenAudio" src="/audio/pieSafe.m4a" type="audio/mpeg"></audio>
                        <div id="progressBar"></div>
                    </div>
            
@@ -147,32 +145,40 @@
                </div>  
                
                 <section class="transcript">
+                  <div class="item_desc">
                     <p class="subTitle">The Pie Safe </p>
-                    <p class="item_desc">
-                        The pie safe is about five feet tall, two feet wide, and a foot deep, or 1.5
-                        meters tall, half a meter wide, and a third of a meter deep. It comprises a box
-                        with an angled top, like a roof and two U-shaped legs that attach at the front
-                        and back of the box. The box and its legs are of equal height. The frame of the
-                        box is made of wood, but the front and sides of the box are made of tin panels.
-                        Its tin shows some signs of oxidation, with rough, brown sections showing
-                        through its otherwise shiny, dark gray exterior. There is a tall door on the
-                        front of the pie safe that takes up a third of the box’s face, which opens from
-                        left to right and is secured by a metal latch. The pie safe is also decorated
-                        with a design made of holes punctured into its tin facade, with each hole about
-                        the size of the head of a pin and similarly spaced between one another. This
-                        pattern repeats three times over the face, and is composed of a tall rectangle
-                        divided in half lengthwise, with a large symbol of a star within a circle
-                        positioned in each half. Each rectangle has an outline thicker at the top than
-                        the bottom, and a simple arched design radiates inwards from the rectangles’
-                        corners. Each star and circle symbol is flanked by simple oval shapes: these
-                        ovals are to the left and right of the star on the middle section, and above or
-                        below the star on the left and right sections. The wooden legs of the pie safe
-                        have no designs, but show signs of discoloration towards the bottom. Underneath
-                        the pie safe are three ceramic jugs with small handles, and a slightly larger
-                        ceramic vessel with a round lid. This larger vessel has the number “3” written
-                        on its side in black ink, outlined with a squiggly square.
+                    <p>
+                      The pie safe is about five feet tall, two feet wide, and a foot deep, or 1.5
+                      meters tall, half a meter wide, and a third of a meter deep.
                     </p>
-                    
+                    <p>
+                      It comprises a box with an angled top, like a roof and two U-shaped legs that
+                      attach at the front and back of the box. The box and its legs are of equal
+                      height. The frame of the box is made of wood, but the front and sides of the box
+                      are made of tin panels. Its tin shows some signs of oxidation, with rough, brown
+                      sections showing through its otherwise shiny, dark gray exterior. There is a
+                      tall door on the front of the pie safe that takes up a third of the box’s face,
+                      which opens from left to right and is secured by a metal latch.
+                    </p>
+                    <p>
+                      The pie safe is also decorated with a design made of holes punctured into its
+                      tin facade, with each hole about the size of the head of a pin and similarly
+                      spaced between one another. This pattern repeats three times over the face, and
+                      is composed of a tall rectangle divided in half lengthwise, with a large symbol
+                      of a star within a circle positioned in each half. Each rectangle has an outline
+                      thicker at the top than the bottom, and a simple arched design radiates inwards
+                      from the rectangles’ corners. Each star and circle symbol is flanked by simple
+                      oval shapes: these ovals are to the left and right of the star on the middle
+                      section, and above or below the star on the left and right sections.
+                    </p>
+                    <p>
+                      The wooden legs of the pie safe have no designs, but show signs of discoloration
+                      towards the bottom. Underneath the pie safe are three ceramic jugs with small
+                      handles, and a slightly larger ceramic vessel with a round lid. This larger
+                      vessel has the number “3” written on its side in black ink, outlined with a
+                      squiggly square.
+                    </p>
+                  </div>
                 </section>
 
             </article>

@@ -15,8 +15,6 @@
         text-align: center;
       }
       .introDiv {
-        background: lightyellow;
-        border: 1px solid black;
         margin: auto; 
         text-align: center;    
       }
@@ -24,11 +22,10 @@
         width:90%;
         padding: 10px;
       }
-      .footer {
+      .audio {
         left: 0;
         width: 100%;
         height:85px;
-        background-color: lightcoral;
         margin-top: 10px;
       }
       .audioPlayer{
@@ -42,6 +39,7 @@
         display: flex;
         align-items: center;  
         padding:3px;
+        font-weight: bold;
       }
       .audioInfo > .audioTitle{
         padding:5px;
@@ -84,21 +82,21 @@
         margin-top: 10px;
       }
       .subTitle{
-        text-align: left;
-        margin-left: 25px;
-        width:90%;
         font-weight: bold;
       }
       .item_desc{
         display: flex;
+        flex-direction: column;
         overflow-x: auto;
-        height: 250px;    
+        height: 300px;    
         text-align: left;
         margin-left: 25px;
         width:90%;
+        font-size: 20px;
       }
-
-
+      .item_desc p{
+        margin:8px;
+      }
     </style>
   </head>
   <body>
@@ -119,16 +117,16 @@
                   />
                 </section>
 
-                <div class="footer">
+                <div class="audio">
                   <div class="audioPlayer">
                    <div class = "audioInfo">
                        <div class="audioTitle">Wash Basin</div>
                        <div class="currentTime">00:00/</div>
-                       <div class="duration">01:59</div>    
+                       <div class="duration">01:13</div>    
                    </div>
            
                    <div class="emptyBar"> 
-                       <audio id="kitchenAudio" src="/audio/testAudio.mp3" type="audio/mpeg"></audio>
+                       <audio id="kitchenAudio" src="/audio/washBasin.m4a" type="audio/mpeg"></audio>
                        <div id="progressBar"></div>
                    </div>
            
@@ -147,24 +145,33 @@
                </div>  
                
                 <section class="transcript">
+                  <div class="item_desc">
                     <p class="subTitle">The Wash Basin </p>
-                    <p class="item_desc">
-                        The wash basin is about three feet tall, four feet wide, and two feet deep, or
-                        one meter tall, one and a third meters wide, and half a meter deep. It consists
-                        of a dark gray soapstone basin and a white wooden base. Each of these two parts
-                        are roughly equal in height. The basin itself is a rectangular trough sink with
-                        slightly outwardly angled sides. Its base is painted white, made from thick
-                        panels of wood about six inches tall that are attached to the bottom of the
-                        sink. Its cylindrical white wooden legs are trumpeted, like decorative, sturdy
-                        vases. The sink is divided in half from back to front with another slab of
-                        soapstone. At the back of the divider is a small platform to hold a block of
-                        soap. Each half of the sink has two metal water spigots attached at the back of
-                        the basin. They are relatively small, each with a horizontal knob at the top to
-                        control the water pressure. Within the left half of the basin are two metal
-                        pots, one stacked inside the other, and underneath the right half of the sink is
-                        a large, low bowl with handles.
+                    <p>
+                      The wash basin is about three feet tall, four feet wide, and two feet deep, or
+                      one meter tall, one and a third meters wide, and half a meter deep. It consists
+                      of a dark gray soapstone basin and a white wooden base. Each of these two parts
+                      are roughly equal in height.
                     </p>
-                    
+                    <p>
+                      The basin itself is a rectangular trough sink with slightly outwardly angled
+                      sides. Its base is painted white, made from thick panels of wood about six
+                      inches tall that are attached to the bottom of the sink. Its cylindrical white
+                      wooden legs are trumpeted, like decorative, sturdy vases.
+                    </p>
+                    <p>
+                      The sink is divided in half from back to front with another slab of soapstone.
+                      At the back of the divider is a small platform to hold a block of soap. Each
+                      half of the sink has two metal water spigots attached at the back of the basin.
+                      They are relatively small, each with a horizontal knob at the top to control the
+                      water pressure.
+                    </p>
+                    <p>
+                      Within the left half of the basin are two metal pots, one stacked inside the
+                      other, and underneath the right half of the sink is a large, low bowl with
+                      handles.
+                    </p>
+                  </div>
                 </section>
 
             </article>

@@ -15,8 +15,6 @@
         text-align: center;
       }
       .introDiv {
-        background: lightyellow;
-        border: 1px solid black;
         margin: auto; 
         text-align: center;    
       }
@@ -24,11 +22,10 @@
         width:90%;
         padding: 10px;
       }
-      .footer {
+      .audio {
         left: 0;
         width: 100%;
         height:85px;
-        background-color: lightcoral;
         margin-top: 10px;
       }
       .audioPlayer{
@@ -42,6 +39,7 @@
         display: flex;
         align-items: center;  
         padding:3px;
+        font-weight: bold;
       }
       .audioInfo > .audioTitle{
         padding:5px;
@@ -84,21 +82,21 @@
         margin-top: 10px;
       }
       .subTitle{
-        text-align: left;
-        margin-left: 25px;
-        width:90%;
         font-weight: bold;
       }
       .item_desc{
         display: flex;
+        flex-direction: column;
         overflow-x: auto;
-        height: 250px;    
+        height: 300px;    
         text-align: left;
         margin-left: 25px;
         width:90%;
+        font-size: 20px;
       }
-
-
+      .item_desc p{
+        margin:8px;
+      }
     </style>
   </head>
   <body>
@@ -119,16 +117,16 @@
                   />
                 </section>
 
-                <div class="footer">
+                <div class="audio">
                   <div class="audioPlayer">
                    <div class = "audioInfo">
                        <div class="audioTitle">The Kitchen Table</div>
                        <div class="currentTime">00:00/</div>
-                       <div class="duration">01:59</div>    
+                       <div class="duration">01:07</div>    
                    </div>
            
                    <div class="emptyBar"> 
-                       <audio id="kitchenAudio" src="/audio/testAudio.mp3" type="audio/mpeg"></audio>
+                       <audio id="kitchenAudio" src="/audio/KITCHEN TABLE.m4a" type="audio/mpeg"></audio>
                        <div id="progressBar"></div>
                    </div>
            
@@ -147,23 +145,32 @@
                </div>  
                
                 <section class="transcript">
+                  <div class="item_desc">
                     <p class="subTitle">The Kitchen Table </p>
-                    <p class="item_desc">
-                        The kitchen table is about three feet tall, five feet wide, and three feet deep,
-                        or one meter tall, one and a half meters wide, and one meter deep. It has a
-                        light brown wooden top and a darkly painted wooden base. The top has rounded
-                        edges and is slightly larger than the base, creating a three inch overhang all
-                        around the table. This top is rough with scratches, knicks, and dark
-                        discoloration, showing signs of continuous daily use. Its four legs are straight
-                        and rectangular, and a two inch tall rectangular rail connects them around the
-                        table’s perimeter near the bottom of the legs. This rail also shows signs of
-                        wear, with lighter wood peeking through the dark paint. On top of the table are
-                        various kitchen and household supplies. There is a large yellow ceramic bowl,
-                        two round loaves of bread, a dozen eggs on a plate, two iron presses with wooden
-                        handles, a wooden rolling pin, a low woven basket, a medium sized wooden bowl,
-                        and a small wooden box with a divider down the middle for organizing cutlery.
+                    <p>
+                      The kitchen table is about three feet tall, five feet wide, and three feet deep,
+                      or one meter tall, one and a half meters wide, and one meter deep.
                     </p>
-                    
+                    <p>
+                      It has a light brown wooden top and a darkly painted wooden base. The top has
+                      rounded edges and is slightly larger than the base, creating a three inch
+                      overhang all around the table. This top is rough with scratches, knicks, and
+                      dark discoloration, showing signs of continuous daily use.
+                    </p>
+                    <p>
+                      Its four legs are straight and rectangular, and a two inch tall rectangular rail
+                      connects them around the table’s perimeter near the bottom of the legs. This
+                      rail also shows signs of wear, with lighter wood peeking through the dark paint.
+                    </p>
+                    <p>
+                      On top of the table are various kitchen and household supplies. There is a large
+                      yellow ceramic bowl, two round loaves of bread, a dozen eggs on a plate, two
+                      iron presses with wooden handles, a wooden rolling pin, a low woven basket, a
+                      medium sized wooden bowl, and a small wooden box with a divider down the middle
+                      for organizing cutlery.
+                    </p>
+
+                  </div>       
                 </section>
 
             </article>

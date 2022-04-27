@@ -8,37 +8,87 @@
     <link rel="stylesheet" href="template.css">
     <title>The Merchant's Museum - Kitchen</title>
     <style>
-      /* Extra small devices (phones, 600px and down) */
-      @media only screen and (max-width: 600px) {
-        body {
-          background: white;
-        }
+      * {
+        margin: 0px;
+        padding: 0px;
       }
-      /* Small devices (portrait tablets and large phones, 600px and up) */
-      @media only screen and (min-width: 600px) {
-        body {
-          background: yellow;
-        }
+      body{
+        background-color: beige;
       }
-      /* Medium devices (landscape tablets, 768px and up) */
-      @media only screen and (min-width: 768px) {
-        body {
-          background: blue;
-        }
-      }
-      /* Large devices (laptops/desktops, 992px and up) */
-      @media only screen and (min-width: 992px) {
-        body {
-          background: orange;
-        }
+      .header{
+        background-color:rgb(215,196,187);
       }
       .title{
+        text-align: center;
+      }
+      .navBar {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #e4b7a0;
+      }
+
+      li {
+        float: right;
+        margin-right: 12px;
+      }
+
+      li a,
+      .dropbtn {
+        display: inline-block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover,
+      .dropdown .dropbtn {
+        padding: 10px;
+        font-weight: bold;
+      }
+
+      li a:hover,
+      .dropdown:hover .dropbtn {
+        background-color: #cc543a;
+      }
+
+      li.dropdown {
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 30px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 12px;
+        text-decoration: none;
+        display: block;
         text-align: left;
-        margin-left: 30px;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      .pageTitle {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 100%;
       }
       .introDiv {
-        background: lightyellow;
-        border: 1px solid black;
         margin: auto;     
       }
       #fullImg {
@@ -47,7 +97,7 @@
         align-items: center;
         height: 400px;
         margin-top: 5px;
-        width: 300px;
+        width: 95%;
         height: 320px;
         display: block;
         margin: 20px auto;
@@ -58,28 +108,10 @@
           0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
           0 8px 16px rgba(0, 0, 0, 0.11);
       }
-  
-      /* .room{
-        background: lightpink;
-        margin-top: 5px;
-        border: 1px solid black;
-        text-align: center;
-      }
-      .objectsWrapper{
-        display: flex;
-        overflow-x: auto;
-        height: 250px;
-        }
-      .objectImg{
-        width:200px;
-        height: 200px;
-        margin: 5px;
-      } */
-      .footer {
+      .audio {
         left: 0;
         width: 100%;
         height:85px;
-        background-color: lightcoral;
         margin-top: 10px;
       }
       .audioPlayer{
@@ -91,19 +123,17 @@
       }
       .audioInfo{
         display: flex;
-        justify-content: center;
-        align-items: center;        
+        align-items: center;  
         padding:3px;
-        font-weight: bold;
       }
-      .audioInfo > .audioTitle{
+      .audioInfo > .audioTitle{ 
         /* margin-right:10px; */
         padding:5px;
       }
       .emptyBar{
-        width: 430px;
+        width: 90%;
         height:5px;
-        background-color: white;
+        background-color: rgb(215,196,187);
         cursor: pointer;
         border-radius: 10px;
       }
@@ -119,7 +149,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: row;
-        padding: 5px;
+        padding: 10px;
       }
       .btnGeneral{
         margin-left:20px;
@@ -132,23 +162,26 @@
         display:none;
       }
       .transcript {
-        border: 1px solid black;
+        /* border: 1px solid black; */
         background: lightcyan;
+        padding: 5px;
         margin-top: 10px;
       }
       .subTitle{
-        text-align: left;
-        margin-left: 25px;
-        width:90%;
         font-weight: bold;
       }
       .item_desc{
         display: flex;
+        flex-direction: column;
         overflow-x: auto;
-        height: 250px;    
+        height: 300px;    
         text-align: left;
         margin-left: 25px;
         width:90%;
+        font-size: 20px;
+      }
+      .item_desc p{
+        margin:8px;
       }
 
 
@@ -156,9 +189,17 @@
   </head>
   <body>
     <div class="header">
-      <header>
-        <h4 class="title">You are at the kitchen.</h4>
-      </header>
+      <ul class="navBar">
+        <h4 class="pageTitle">Room Information</h4>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">Menu</a>
+          <div class="dropdown-content">
+            <!-- <a href="settings.html">Settings</a> -->
+            <a href="menu.html">Objects</a>
+            <a href="index.html">Map</a>
+          </div>
+        </li>
+      </ul>
     </div>
 
     <div class="content">
@@ -174,16 +215,16 @@
                     </iframe>
                 </section>
 
-                <div class="footer">
+                <div class="audio">
                   <div class="audioPlayer">
                    <div class = "audioInfo">
                        <div class="audioTitle">Perspective: Irish Servant</div>
                        <div class="currentTime">00:00/</div>
-                       <div class="duration">01:59</div>    
+                       <div class="duration">04:01</div>    
                    </div>
            
                    <div class="emptyBar"> 
-                       <audio id="kitchenAudio" src="assets/testAudio.mp3" type="audio/mpeg"></audio>
+                       <audio id="kitchenAudio" src="audio/PERSPECTIVE.m4a" type="audio/mpeg"></audio>
                        <div id="progressBar"></div>
                    </div>
            
@@ -202,80 +243,79 @@
                </div>  
                
                 <section class="transcript">
+                  <div class="item_desc">
                     <p class="subTitle">The Kitchen </p>
-                    <p class="item_desc">
-                      Hello, Welcome to the kitchen! You stand on a dark wooden plank floor,
-                      surrounded by off-white painted brick walls. Things are rather busy right now,
-                      as myself and my helper are preparing dinner for the Tredwell family. The four
-                      of us servants have already been up since dawn carrying out our duties,
-                      preparing breakfast, setting tables, tidying, and refilling the houses’ oil
-                      lamps, two of which can currently be found on a table at the back left corner,
-                      along with three more traditional candle holders. We will need these as the
-                      night goes longer and the sun begins to set, but for now we have adequate
-                      daylight to work. I’m standing behind our preparation station, a long wooden
-                      table stuffed to its edges with mixing bowls, rolling pins, and other
-                      utensils. We’ve brought a wooden chair to the right of the table so we can
-                      rest our feet as we prepare ingredients, many of which were purchased by
-                      Seabury Tredwell himself at the nearby Tompkins Market this very morning.
+                    <p>Hello, Welcome to the kitchen! You stand on a dark wooden plank floor, 
+                      surrounded by off-white painted brick walls. 
+                    </p>
+                    <p>
+                      Things are rather busy right now, as myself and my helper are preparing dinner
+                      for the Tredwell family. The four of us servants have already been up since dawn
+                      carrying out our duties, preparing breakfast, setting tables, tidying, and
+                      refilling the houses’ oil lamps, two of which can currently be found on a table
+                      at the back left corner, along with three more traditional candle holders. We
+                      will need these as the night goes longer and the sun begins to set, but for now
+                      we have adequate daylight to work.
+                    </p>    
+                    <p>
+                      I’m standing behind our preparation station, a long wooden table stuffed to its
+                      edges with mixing bowls, rolling pins, and other utensils. We’ve brought a
+                      wooden chair to the right of the table so we can rest our feet as we prepare
+                      ingredients, many of which were purchased by Seabury Tredwell himself at the
+                      nearby Tompkins Market this very morning.
+                    </p>
+                    <p>
                       Behind me to the left is a traditional beehive oven, which looks like a square
                       hole cut into the wall, with black stone above and below the opening. It is
-                      named for its domed interior, from which the smell of freshly baked bread
-                      wafts through the air, mixed with the smoky aroma of the oven’s flames. I can
-                      feel its heat as the bread bakes, but soon the oven will cool, and I can use
-                      the lower temperatures to bake custards and cakes for dessert. Directly behind
-                      me is a black cast iron coal-burning stove with an elaborately decorated
-                      front. Metal pots and kettles sit atop it, and occasionally you can hear its
-                      coals pop. From it, I’m beginning to get a whiff of the savory, stewed
-                      vegetables that will be eaten as a later course. This stove is a more modern
-                      technology, which helps us cook several types of food at once. I didn’t like
-                      it much at first, but it’s growing on me: With the addition of this new stove,
-                      we are more easily able to host the family’s elaborate, multi-course dinner
-                      parties. However, the old fashioned beehive oven is still best for baking
-                      bread. To the right of the new stove are two long, built-in shelves where we
-                      store dishes and cookware. Built into the bottom shelf is a smaller basin for
-                      washing up, with two water spigots and three cabinets of storage built into
-                      its base. This is not our only wash area, though. To your right is our large,
-                      soapstone utility tub which sits between two windows that look out onto the
-                      garden. The tub’s dark gray angled basin slants out slightly from the wall,
-                      while its bright white wooden base sits on its thick dowel legs. We have the
-                      utmost luxury of running water in this home, thanks to a 4,000-gallon cistern
-                      located underground in the garden. This helps us to wash our cookware and do
-                      laundry quickly and more easily. Oh, it smells like the bread is ready! We’re
-                      always having to multitask here. Beautiful, it looks delicious! For now, I
-                      will keep it in the pie safe all the way against the wall to your left, next
-                      to the door to the storage room. The pie safe, a metal-paneled box on tall,
-                      wooden legs, will keep our baked goods away from pests until they’re ready to
-                      eat while the decoratively punctured holes on its front panel will help them
-                      cool. Above the pie safe is a small interior window with white wooden trim,
-                      which gives us some much-needed light to the pantry on the other side of the
-                      wall. And finally, tucked underneath the pie safe on the floor are ceramic
-                      crocks, either with two handles to the sides and a large lid, or jugs with one
-                      handle and a smaller opening. These are also quite important in storing food
-                      and keeping it safe from pesky vermin. [Bell rings] Oh, perfect timing! That
-                      bell means that the family is ready for their food… I think I see my server
-                      coming through the garden now! If you’ll excuse me, I’ll need to be of service
-                      for a bit, but thank you for stopping by my kitchen!
+                      named for its domed interior, from which the smell of freshly baked bread wafts
+                      through the air, mixed with the smoky aroma of the oven’s flames. I can feel its
+                      heat as the bread bakes, but soon the oven will cool, and I can use the lower
+                      temperatures to bake custards and cakes for dessert.
                     </p>
+                    <p>
+                      Directly behind me is a black cast iron coal-burning stove with an elaborately
+                      decorated front. Metal pots and kettles sit atop it, and occasionally you can
+                      hear its coals pop. From it, I’m beginning to get a whiff of the savory, stewed
+                      vegetables that will be eaten as a later course. This stove is a more modern
+                      technology, which helps us cook several types of food at once. I didn’t like it
+                      much at first, but it’s growing on me: With the addition of this new stove, we
+                      are more easily able to host the family’s elaborate, multi-course dinner
+                      parties. However, the old fashioned beehive oven is still best for baking bread.
+                    </p>     
+                    <p>
+                      To the right of the new stove are two long, built-in shelves where we store
+                      dishes and cookware. Built into the bottom shelf is a smaller basin for washing
+                      up, with two water spigots and three cabinets of storage built into its base.
+                      This is not our only wash area, though. To your right is our large, soapstone
+                      utility tub which sits between two windows that look out onto the garden. The
+                      tub’s dark gray angled basin slants out slightly from the wall, while its bright
+                      white wooden base sits on its thick dowel legs. We have the utmost luxury of
+                      running water in this home, thanks to a 4,000-gallon cistern located underground
+                      in the garden. This helps us to wash our cookware and do laundry quickly and
+                      more easily.
+                    </p> 
+                    <p>Oh, it smells like the bread is ready! We’re always having to multitask here. </p>          
+                    <p>
+                      Beautiful, it looks delicious! For now, I will keep it in the pie safe all the
+                      way against the wall to your left, next to the door to the storage room. The pie
+                      safe, a metal-paneled box on tall, wooden legs, will keep our baked goods away
+                      from pests until they’re ready to eat while the decoratively punctured holes on
+                      its front panel will help them cool. Above the pie safe is a small interior
+                      window with white wooden trim, which gives us some much-needed light to the
+                      pantry on the other side of the wall. And finally, tucked underneath the pie
+                      safe on the floor are ceramic crocks, either with two handles to the sides and a
+                      large lid, or jugs with one handle and a smaller opening. These are also quite
+                      important in storing food and keeping it safe from pesky vermin.
+                    </p>
+                    <p>
+                      [Bell rings] Oh, perfect timing! That bell means that the family is ready for
+                      their food… I think I see my server coming through the garden now! If you’ll
+                      excuse me, I’ll need to be of service for a bit, but thank you for stopping by
+                      my kitchen!
+                    </p>
+                  </div>
                     
                 </section>
-
-                <!-- <div class="room">
-                    <p>Room Objects</p>
-                    <div class="objectsWrapper">
-                        <div id="kitchenTable">
-                            <img src="images/kitchenTable.JPG" class="objectImg">
-                        </div>
-                        <div class="pieSafe">
-                            <img src="images/PieSafe.JPG" class="objectImg">
-                        </div>
-                        <div class="washBasin">
-                            <img src="images/WashBasin.JPG" class="objectImg">
-                        </div>
-                        <div class="candle">
-                            <img src="images/candleLamps.JPG" class="objectImg">
-                        </div>
-                    </div>                
-                  </div> -->
             </article>
         </main>
     </div>
@@ -350,3 +390,5 @@
   
   </script>
 </html>
+
+
