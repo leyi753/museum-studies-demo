@@ -1,23 +1,25 @@
-body {
+  body {
     font-family: Georgia, "Times New Roman", Times, serif;
+    background-color: beige;
   }
-.header {
+  .header {
     position: absolute;
     top: 0;
-    left:0;
+    left: 0;
     width: 100%;
     background-color: #e4b7a0;
     height: 30px;
-}
-.title{
+  }
+  .title {
     margin-top: 5px;
     margin-left: 10px;
-}
-.content{
+  }
+  .content {
     padding: 10px;
-    width:90%;  
-    margin: auto;     
-}
-.header + .content {
-    padding-top: 35px;
-}
+    width: 95%;
+    margin: auto;
+  }
+  .header + .content {
+    padding-top: 45px;
+  }
+  
