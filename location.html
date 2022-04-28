@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="template.css" />
+    <title>The Merchant's Museum - Museum Map</title>
+    <style>
+      body {
+        background-color: beige;
+        height: 100%;
+      }
+      .content {
+        /* border: 1px solid black; */
+        margin-top: 40px;
+      }
+      .header + .content {
+        padding-top: 0px;
+      }
+      #add_marker_panel {
+        display: none;
+      }
+      #marker_list > div {
+        border: 1px solid black;
+        width: 200px;
+        margin-bottom: 10px;
+      }
+      .close {
+        background-color: yellow;
+      }
+      #mymap {
+        position: relative;
+        margin: auto;
+        margin-top: 10px;
+        width: 90%;
+        height: 300px;
+      }
+      /* popup styles */
+      #notice {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        width: 100%;
+        height: 600px;
+        background-color: white;
+      }
+      #msgBox {
+        width: 250px;
+        text-align: center;
+        margin: auto;
+        border-radius: 15px;
+        padding: 12px;
+        background-color: lightgoldenrodyellow;
+      }
+      #msgType {
+        font-weight: bold;
+        font-size: 22px;
+        border: 1px solid black;
+        padding: 3px;
+      }
+      #msg {
+        display: block;
+        width: 90%;
+        margin: auto;
+        padding: 3px;
+        font-size: 18px;
+      }
+      ._btn {
+        border: none;
+        border-radius: 3px;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        background-color: ivory;
+        font-size: 15px;
+        width: 80%;
+        padding: 3px;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+      ._btn:active {
+        background-color: coral;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <header>
+        <h4 class="title">Museum Map</h4>
+      </header>
+    </div>
+
+    <div class="content">
+      <main>
+        <button id="drop_marker">Record position</button><br />
+
+        <span id="latitude"></span>
+        <span id="longitude"></span>
+        <!-- <ul>
+          <li>Latitude: <span id="latitude">waiting for data</span></li>
+          <li>Longitude: <span id="longitude">waiting for data</span></li>
+        </ul> -->
+        <div id="add_marker_panel">
+          <!-- <button id="drop_marker">Record position</button> -->
+          <!-- <h2 id="matched">Your Markers</h2> -->
+          <!-- <div>
+            Closeness threshold:
+            <input
+              id="threshold"
+              type="range"
+              min="1"
+              max="10"
+              value="5"
+              step="0.1"
+            />
+          </div> -->
+          <div id="marker_list"></div>
+        </div>
+      </main>
+    </div>
+
+    <div id="next"></div>
+
+    <script>
+      const add_marker_panel = document.getElementById("add_marker_panel");
+      const latitude = document.getElementById("latitude");
+      const longitude = document.getElementById("longitude");
+      const drop_marker = document.getElementById("drop_marker");
+      const marker_list = document.getElementById("marker_list");
+      const threshold = document.getElementById("threshold");
+      const global_location = {
+        _lat: undefined,
+        _long: undefined
+      };
+      const offset = 1;
+      const forward = false;
+      const markers = [];
+      let marker_id_counter = 0;
+
+      function proceedtoNext() {
+        const noticeBox = document.createElement("div");
+        noticeBox.innerHTML = `
+                <div id="notice">
+                    <div id="msgBox">
+                    <p><span id="msg">You are approaching the kitchen. Would you like to
+                        activiate audio guide?</span></p>
+                    <button class="_btn" id="confirm" onclick="location.href='kitchen2.html'">Yes</button>
+                    </div>
+                </div>
+                `;
+        document.getElementById("next").append(noticeBox);
+        document.querySelector(".content").classList.add("hidden");
+      }
+
+      function handleGeoData(_lat, _long) {
+        // make sure the add_marker_panel is visible
+        add_marker_panel.style.display = "block";
+
+        // store position in our global object
+        global_location._lat = _lat;
+        global_location._long = _long;
+
+        // display position to user via HTML
+        latitude.innerText = _lat;
+        longitude.innerText = _long;
+
+        // figure out how far away we are from all of our previously created markers
+        for (let i = 0; i < markers.length; i++) {
+          // compute distance between this marker and the current position
+          let d = Math.sqrt(
+            Math.pow(markers[i]._lat - _lat, 2) +
+              Math.pow(markers[i]._long - _long, 2)
+          );
+
+          // convert to meters
+          d = d * 111139; // https://sciencing.com/convert-latitude-longtitude-feet-2724.html
+
+          // update element
+          document.getElementById(markers[i]._id).innerHTML =
+            "Distance: " + d + " meters";
+
+          // are we close to this marker?
+          if (d < 5) {
+            proceedtoNext();
+            document
+              .getElementById(markers[i]._id)
+              .parentElement.classList.add("close");
+            document.getElementById("matched").innerText = "Matched!";
+          } else {
+            document
+              .getElementById(markers[i]._id)
+              .parentElement.classList.remove("close");
+          }
+        }
+      }
+
+      // make sure we have access to the geo location API
+      if (!navigator.geolocation) {
+        alert("Geolocation is not supported by your browser");
+      }
+
+      // success - we can access the geo location API
+      else {
+        // set up a watch function to run every time the user's geo position changes
+        const watchID = navigator.geolocation.watchPosition(
+          function (position) {
+            handleGeoData(position.coords.latitude, position.coords.longitude);
+          },
+          function (error) {
+            alert("Position error: " + error);
+          },
+          {
+            enableHighAccuracy: true,
+            maximumAge: 0,
+            timeout: 5000
+          }
+        );
+
+        // if the user wants to mark this position
+        drop_marker.addEventListener("click", function (e) {
+          // const noticeBox = document.createElement("div");
+          // noticeBox.innerHTML = `
+          //   <div id="notice">
+          //       <div id="msgBox">
+          //       <p><span id="msg">You are approaching the kitchen. Would you like to
+          //           activiate audio guide?</span></p>
+          //       <button class="_btn" id="confirm" onclick="location.href='kitchen.html'">Yes</button>
+          //       </div>
+          //   </div>
+          //   `;
+          // document.getElementById("next").append(noticeBox);
+          // document.querySelector(".content").classList.add("hidden");
+
+          // create a new marker object
+          const tempMarker = {
+            _lat: global_location._lat,
+            _long: global_location._long,
+            _id: "marker" + marker_id_counter
+          };
+
+          // store in our array
+          markers.push(tempMarker);
+
+          // create an element dispaly the marker
+          let tempMarkerEl = document.createElement("div");
+          tempMarkerEl.classList.add("close");
+
+          // element to hold position (static)
+          let tempMarkerElPosition = document.createElement("div");
+          tempMarkerElPosition.innerHTML =
+            "Latitude: " +
+            global_location._lat +
+            "<br>Longitude: " +
+            global_location._long;
+          tempMarkerEl.appendChild(tempMarkerElPosition);
+
+          // element to hold distance (dynamically updated)
+          let tempMarkerElDistance = document.createElement("div");
+          tempMarkerElDistance.innerHTML = "Distance: 0 meters";
+          tempMarkerElDistance.id = "marker" + marker_id_counter;
+          tempMarkerEl.appendChild(tempMarkerElDistance);
+
+          // add the marker to the page
+          marker_list.appendChild(tempMarkerEl);
+
+          // update marker_id_counter for the next marker
+          marker_id_counter++;
+        });
+      }
+    </script>
+  </body>
+</html>
