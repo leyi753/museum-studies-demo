@@ -144,14 +144,14 @@
       function proceedtoNext() {
         const noticeBox = document.createElement("div");
         noticeBox.innerHTML = `
-                <div id="notice">
-                    <div id="msgBox">
-                    <p><span id="msg">You are approaching the kitchen. Would you like to
-                        activiate audio guide?</span></p>
-                    <button class="_btn" id="confirm" onclick="location.href='kitchen.html'">Yes</button>
-                    </div>
-                </div>
-                `;
+          <div id="notice">
+              <div id="msgBox">
+              <p><span id="msg">You are approaching the kitchen. Would you like to
+                  activiate audio guide?</span></p>
+              <button class="_btn" id="confirm" onclick="location.href='kitchen.html'">Yes</button>
+              </div>
+          </div>
+          `;
         document.getElementById("next").append(noticeBox);
         document.querySelector(".content").classList.add("hidden");
       }
@@ -222,19 +222,6 @@
 
         // if the user wants to mark this position
         drop_marker.addEventListener("click", function (e) {
-          // const noticeBox = document.createElement("div");
-          // noticeBox.innerHTML = `
-          //   <div id="notice">
-          //       <div id="msgBox">
-          //       <p><span id="msg">You are approaching the kitchen. Would you like to
-          //           activiate audio guide?</span></p>
-          //       <button class="_btn" id="confirm" onclick="location.href='kitchen.html'">Yes</button>
-          //       </div>
-          //   </div>
-          //   `;
-          // document.getElementById("next").append(noticeBox);
-          // document.querySelector(".content").classList.add("hidden");
-
           // create a new marker object
           const tempMarker = {
             _lat: global_location._lat,
