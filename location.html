@@ -26,7 +26,6 @@
         border: none;
         border-radius: 8px;
         cursor: pointer;
-        /* margin-top: 5px; */
       }
       #add_marker_panel {
         display: none;
@@ -200,7 +199,7 @@
           document.getElementById(markers[i]._id).innerHTML =
             "Distance: " + d + " meters";
 
-          // are we close to this marker?
+          // between 3.5m to 4.5m
           if (d < 5 - offset && d > 3 + offset) {
             proceedtoNext();
             // document
